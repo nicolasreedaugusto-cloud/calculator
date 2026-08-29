@@ -286,10 +286,20 @@ function devide() {
     input = input.map(item => Number(item))
     console.log(input)
 
+   
+
+if (input.slice(1).includes(0)) {
+    display.textContent = "error";
+    input = "";
+    return;
+}
+
     result = input.reduce((sum, curr) => {
         return sum / curr
     })
     result = Math.round(result * 10) / 10
+
+    
     // result
     let resultDisplay = document.createElement("p")
     resultDisplay.textContent = result
@@ -300,4 +310,3 @@ function devide() {
     console.log(input)
 }
 
-function operate() {}
