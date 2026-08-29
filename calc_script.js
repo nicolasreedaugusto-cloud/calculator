@@ -35,8 +35,7 @@ let equal = document.querySelector('.Equal')
     
 function clickOne() {
 
-    display.innerHTML = ' '
-    
+    display.innerHTML = ' '   
     input += "1"
     let one = document.createElement("p")
     one.textContent = input
