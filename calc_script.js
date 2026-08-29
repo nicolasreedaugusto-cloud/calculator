@@ -1,8 +1,10 @@
 let input = ""
+let result = undefined
     
     
     
  // querySelectors 
+    // digits
 let display = document.querySelector('.display')
 let one = document.querySelector('.number1')
 let two = document.querySelector('.number2')
@@ -15,8 +17,21 @@ let eight = document.querySelector('.number8')
 let nine = document.querySelector('.number9')
 let zero = document.querySelector('.number0')
 
+    // operators
+let plus = document.querySelector('.add')
+let minus = document.querySelector('.subtract')
+let times = document.querySelector('.multiply')
+let divide = document.querySelector('.Divide')
+
+    // special buttons
+
+let clear = document.querySelector('.clear')
+let equal = document.querySelector('.Equal')
+
     
 // click handlers
+
+    // digits
     
 function clickOne() {
 
@@ -77,7 +92,7 @@ function clickSeven() {
 
 function clickEight() {
     display.innerHTML = ' '
-    input += "8"
+    input += "7"
     let eight = document.createElement("p")
     eight.textContent = input
     display.appendChild(eight)
@@ -99,8 +114,61 @@ function clickZero() {
     display.appendChild(zero)
 }
 
+    // operators 
+
+function clickPlus() {
+    display.innerHTML = ' '
+    input += " + "
+    let plus = document.createElement("p")
+    plus.textContent = input
+    display.appendChild(plus)
+}
+
+function clickMinus() {
+    display.innerHTML = ' '
+    input += " - "
+    let minus = document.createElement("p")
+    minus.textContent = input
+    display.appendChild(minus)
+}
+
+function clickTimes() {
+    display.innerHTML = ' '
+    input += " x "
+    let times = document.createElement("p")
+    times.textContent = input
+    display.appendChild(times)
+}
+
+function clickDivide() {
+    display.innerHTML = ' '
+    
+    input += " ÷ "
+    let divide = document.createElement("p")
+    divide.textContent = input
+    display.appendChild(divide)
+}
+
+    // special buttons
+
+function clickClear() {
+    display.innerHTML = ' '
+    return input = ""
+}
+
+function clickEqual() {
+    input = input.split(" ")
+    console.log(input)
+    
+    if (input.includes('+')) add()
+    if (input.includes('-')) subtract()
+    if (input.includes('x')) multiply()
+    if (input.includes('÷')) devide()
+}
+
+
 // event listeners 
- 
+    // digits
 one.addEventListener('click', clickOne)
 two.addEventListener('click', clickTwo)
 three.addEventListener('click', clickThree)
@@ -112,15 +180,94 @@ eight.addEventListener('click', clickEight)
 nine.addEventListener('click', clickNine)
 zero.addEventListener('click', clickZero)
 
+    //operators
+plus.addEventListener('click', clickPlus)
+minus.addEventListener('click', clickMinus)
+times.addEventListener('click', clickTimes)
+divide.addEventListener('click', clickDivide)
+
+    //special buttons
+
+clear.addEventListener('click', clickClear)
+equal.addEventListener('click', clickEqual)
+
 
 
 // operation functions
-function add() {}
+function add() {
+    input.splice(1, input.indexOf('+'))
+    console.log(input)
+    input = input.map(item => Number(item))
+    console.log(input)
 
-function subtract() {}
+    input = input.reduce((sum, curr) => {
+        return sum + curr
+    }, 0)
+    // result
+    let result = document.createElement("p")
+    result.textContent = input
+    display.appendChild(result) 
+    // result/
+    input = []
+    input.push(result)
+    console.log(input)
+}
 
-function multiply() {}
+function subtract() {
+    input.splice(1, input.indexOf('-'))
+    console.log(input)
+    input = input.map(item => Number(item))
+    console.log(input)
 
-function devide() {}
+    input = input.reduce((sum, curr) => {
+        return sum - curr
+    })
+    // result
+    let result = document.createElement("p")
+    result.textContent = input
+    display.appendChild(result) 
+    // result/
+    input = []
+    input.push(result)
+    console.log(input)
+}
+
+function multiply() {
+    input.splice(1, input.indexOf('x'))
+    console.log(input)
+    input = input.map(item => Number(item))
+    console.log(input)
+
+    input = input.reduce((sum, curr) => {
+        return sum * curr
+    }, 1)
+    // result
+    let result = document.createElement("p")
+    result.textContent = input
+    display.appendChild(result) 
+    // result/
+    input = []
+    input.push(result)
+    console.log(input)
+}
+
+function devide() {
+     input.splice(1, input.indexOf('÷'))
+    console.log(input)
+    input = input.map(item => Number(item))
+    console.log(input)
+
+    result = input.reduce((sum, curr) => {
+        return sum / curr
+    })
+    // result
+    let resultDisplay = document.createElement("p")
+    result.textContent = input
+    display.appendChild(resultDisplay) 
+    // result/
+    input = []
+    input.push(result)
+    console.log(input)
+}
 
 function operate() {}

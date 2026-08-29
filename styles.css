@@ -29,3 +29,7 @@ button {
     box-sizing: content-box;
 
 }
+
+p {
+    margin: 0;
+}
