@@ -118,6 +118,13 @@ function clickZero() {
 
 function clickPlus() {
     display.innerHTML = ' '
+    if (input.length > 2) {input = input.split(" ")
+    console.log(input)
+    
+    if (input.includes('+')) add()
+    if (input.includes('-')) subtract()
+    if (input.includes('x')) multiply()
+    if (input.includes('÷')) devide()}
     input += " + "
     let plus = document.createElement("p")
     plus.textContent = input
@@ -126,6 +133,13 @@ function clickPlus() {
 
 function clickMinus() {
     display.innerHTML = ' '
+    if (input.length > 2) {input = input.split(" ")
+    console.log(input)
+    
+    if (input.includes('+')) add()
+    if (input.includes('-')) subtract()
+    if (input.includes('x')) multiply()
+    if (input.includes('÷')) devide()}
     input += " - "
     let minus = document.createElement("p")
     minus.textContent = input
@@ -134,6 +148,13 @@ function clickMinus() {
 
 function clickTimes() {
     display.innerHTML = ' '
+    if (input.length > 2) {input = input.split(" ")
+    console.log(input)
+    
+    if (input.includes('+')) add()
+    if (input.includes('-')) subtract()
+    if (input.includes('x')) multiply()
+    if (input.includes('÷')) devide()}
     input += " x "
     let times = document.createElement("p")
     times.textContent = input
@@ -142,7 +163,14 @@ function clickTimes() {
 
 function clickDivide() {
     display.innerHTML = ' '
+    if (input.length > 2) {input = input.split(" ")
+    console.log(input)
     
+    if (input.includes('+')) add()
+    if (input.includes('-')) subtract()
+    if (input.includes('x')) multiply()
+    if (input.includes('÷')) devide()}
+
     input += " ÷ "
     let divide = document.createElement("p")
     divide.textContent = input
@@ -200,16 +228,16 @@ function add() {
     input = input.map(item => Number(item))
     console.log(input)
 
-    input = input.reduce((sum, curr) => {
+    result = input.reduce((sum, curr) => {
         return sum + curr
     }, 0)
     // result
-    let result = document.createElement("p")
-    result.textContent = input
-    display.appendChild(result) 
+     let resultDisplay = document.createElement("p")
+    resultDisplay.textContent = result
+    display.appendChild(resultDisplay) 
     // result/
-    input = []
-    input.push(result)
+    input = ""
+    input += result
     console.log(input)
 }
 
@@ -219,16 +247,16 @@ function subtract() {
     input = input.map(item => Number(item))
     console.log(input)
 
-    input = input.reduce((sum, curr) => {
+    result = input.reduce((sum, curr) => {
         return sum - curr
     })
     // result
-    let result = document.createElement("p")
-    result.textContent = input
-    display.appendChild(result) 
+    let resultDisplay = document.createElement("p")
+    resultDisplay.textContent = result
+    display.appendChild(resultDisplay) 
     // result/
-    input = []
-    input.push(result)
+    input = ""
+    input += result
     console.log(input)
 }
 
@@ -238,17 +266,18 @@ function multiply() {
     input = input.map(item => Number(item))
     console.log(input)
 
-    input = input.reduce((sum, curr) => {
+    result = input.reduce((sum, curr) => {
         return sum * curr
     }, 1)
     // result
-    let result = document.createElement("p")
-    result.textContent = input
-    display.appendChild(result) 
+    let resultDisplay = document.createElement("p")
+    resultDisplay.textContent = result
+    display.appendChild(resultDisplay) 
     // result/
-    input = []
-    input.push(result)
+   input = ""
+    input += result
     console.log(input)
+    
 }
 
 function devide() {
@@ -260,13 +289,14 @@ function devide() {
     result = input.reduce((sum, curr) => {
         return sum / curr
     })
+    result = Math.round(result * 10) / 10
     // result
     let resultDisplay = document.createElement("p")
-    result.textContent = input
+    resultDisplay.textContent = result
     display.appendChild(resultDisplay) 
     // result/
-    input = []
-    input.push(result)
+    input = ""
+    input += result
     console.log(input)
 }
 
